@@ -1,0 +1,29 @@
+{% extends 'mailsender_app/base.html' %}
+
+{% block content %}
+<a href="{% url 'mailsender:mailing_create' %}" class="btn btn-outline-primary mb-4">Создать рассылку</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Дата создания</th>
+        <th scope="col">Дата окончания</th>
+        <th scope="col">Периодичность</th>
+        <th scope="col">Статус</th>
+        <th scope="col">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for object in object_list %}
+    <tr>
+        <td>{{ object.created_at }}</td>
+        <td>{{ object.ended_at }}</td>
+        <td>{{ object.periodicity }}</td>
+        <td>{{ object.status }}</td>
+        <td>
+            <a href="{% url 'mailsender:mailing_detail' object.pk %}" class="btn btn-info btn-sm">Посмотреть</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

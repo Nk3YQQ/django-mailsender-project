@@ -1,3 +1,5 @@
+from time import sleep
+
 from django.apps import AppConfig
 
 

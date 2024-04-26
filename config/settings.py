@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
 
     'crispy_forms',
     'crispy_bootstrap5',
@@ -159,3 +160,11 @@ if CACHE_ENABLED:
             "LOCATION": os.getenv('LOCATION'),
         }
     }
+
+CRON_LOGS = (
+    BASE_DIR / "cron_logs.log"
+)
+
+CRONJOBS = [
+    ('0 * * * *', 'mailsender_app.cron.send_email', f'>> {CRON_LOGS}'),
+]
