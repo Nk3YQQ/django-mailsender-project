@@ -1,0 +1,20 @@
+{% extends 'mailsender_app/base.html' %}
+
+{% block content %}
+<div class="col-8 mx-auto">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h2 align="center">{{ object.title }}</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ object.body }}</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'mailsender:message_edit' object.pk %}" class="btn btn-warning">Изменить</a>
+                <a href="{% url 'mailsender:message_delete' object.pk %}" class="btn btn-danger">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
