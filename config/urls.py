@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('mailsender_app.config', namespace='mailsender'))
+    path('', include('mailsender_app.urls', namespace='mailsender'))
 ]
