@@ -1,0 +1,138 @@
+[
+  {
+    "model": "mailsender_app.client",
+    "pk": 1,
+    "fields": {
+      "name": "Артём",
+      "surname": "Богданов",
+      "patronymic": null,
+      "email": "artem.bogdanov@mail.ru",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailsender_app.client",
+    "pk": 2,
+    "fields": {
+      "name": "Лаврентий",
+      "surname": "Петров",
+      "patronymic": null,
+      "email": "lavrentiy.petrov@list.ru",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailsender_app.client",
+    "pk": 3,
+    "fields": {
+      "name": "Константин",
+      "surname": "Ростов",
+      "patronymic": null,
+      "email": "konstantin.rostov@list.ru",
+      "comment": "",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailsender_app.client",
+    "pk": 4,
+    "fields": {
+      "name": "Егор",
+      "surname": "Никитин",
+      "patronymic": null,
+      "email": "nikitin-zhora@list.ru",
+      "comment": "",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailsender_app.message",
+    "pk": 1,
+    "fields": {
+      "title": "Test",
+      "body": "Test!!!",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailsender_app.message",
+    "pk": 2,
+    "fields": {
+      "title": "New message",
+      "body": "Hello, World!",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailsender_app.message",
+    "pk": 3,
+    "fields": {
+      "title": "Маркетинг",
+      "body": "Текст",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailsender_app.mailing",
+    "pk": 1,
+    "fields": {
+      "created_at": "2024-05-01T00:00:00Z",
+      "ended_at": "2024-05-05T00:00:00Z",
+      "periodicity": "Раз в день",
+      "status": "Запущена",
+      "message": 1,
+      "owner": 2,
+      "is_active": false,
+      "client": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "mailsender_app.mailing",
+    "pk": 3,
+    "fields": {
+      "created_at": "2024-04-30T00:00:00Z",
+      "ended_at": "2024-05-03T00:00:00Z",
+      "periodicity": "Раз в день",
+      "status": "Создана",
+      "message": 1,
+      "owner": 2,
+      "is_active": true,
+      "client": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "mailsender_app.mailing",
+    "pk": 4,
+    "fields": {
+      "created_at": "2024-05-02T00:00:00Z",
+      "ended_at": "2024-05-06T00:00:00Z",
+      "periodicity": "Раз в неделю",
+      "status": "Запущена",
+      "message": 3,
+      "owner": 2,
+      "is_active": true,
+      "client": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "mailsender_app.attempt",
+    "pk": 1,
+    "fields": {
+      "attempt_time": "2024-04-29T16:00:02.384Z",
+      "status": "Успешно",
+      "server_response": "Рассылка успешно отправлена",
+      "mailing": 3,
+      "client": 4
+    }
+  }
+]
