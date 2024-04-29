@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {'blank': True, 'null': True}
 
 
@@ -22,6 +24,8 @@ class Client(models.Model):
     email = models.CharField(max_length=50, unique=True, verbose_name='Электронная почта')
     comment = models.TextField(verbose_name='Комментарий', **NULLABLE)
 
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
+
     def __str__(self):
         return f'{self.name} {self.surname}'
 
@@ -33,6 +37,8 @@ class Client(models.Model):
 class Message(models.Model):
     title = models.CharField(max_length=250, verbose_name='Заголовок')
     body = models.TextField(verbose_name='Тело письма')
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
 
     def __str__(self):
         return self.title
@@ -50,7 +56,11 @@ class Mailing(models.Model):
     status = models.CharField(max_length=30, choices=Status.choices, verbose_name='Статус', default='Запущена')
 
     client = models.ManyToManyField(Client, related_name='mailing_list', verbose_name='Клиенты')
-    message = models.OneToOneField(Message, on_delete=models.PROTECT, verbose_name='Сообщение')
+    message = models.ForeignKey(Message, on_delete=models.PROTECT, verbose_name='Сообщение')
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
+
+    is_active = models.BooleanField(default=True, verbose_name='Активна')
 
     def __str__(self):
         return f'{self.message} - {self.periodicity} - {self.status}'

@@ -1,7 +1,9 @@
 {% extends 'mailsender_app/base.html' %}
 
 {% block content %}
+{% if not user.is_staff %}
 <a href="{% url 'mailsender:mailing_create' %}" class="btn btn-outline-primary mb-4">Создать рассылку</a>
+{% endif %}
 <table class="table">
     <thead>
     <tr>
@@ -9,6 +11,9 @@
         <th scope="col">Дата окончания</th>
         <th scope="col">Периодичность</th>
         <th scope="col">Статус</th>
+        {% if user.is_staff %}
+        <th scope="col">Пользователь</th>
+        {% endif %}
         <th scope="col">Действия</th>
     </tr>
     </thead>
@@ -19,6 +24,9 @@
         <td>{{ object.ended_at }}</td>
         <td>{{ object.periodicity }}</td>
         <td>{{ object.status }}</td>
+        {% if user.is_staff %}
+        <td>{{ object.owner }}</td>
+        {% endif %}
         <td>
             <a href="{% url 'mailsender:mailing_detail' object.pk %}" class="btn btn-info btn-sm">Посмотреть</a>
         </td>
