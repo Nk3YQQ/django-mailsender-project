@@ -1,0 +1,31 @@
+{% extends 'mailsender_app/base.html' %}
+
+{% load blog_tags %}
+
+{% block content %}
+<a href="{% url 'blog:blog_create' %}" class="btn btn-outline-primary mb-4">Добавить статью</a>
+<div class="col-12">
+    <div class="row">
+        {% for object in object_list %}
+        <div class="col-6">
+            <div class="card">
+                <img class="mx-auto" style="width: 300px; height: 300px" src="{{ object.preview|my_media }}">
+                <div class="card-title mt-4">
+                    <a href="{% url 'blog:blog_detail' object.pk %}" class="card-title"><h5 align="center">{{ object.title }}</h5></a>
+                </div>
+                {% if perms.blog.change_blog %}
+                <div class="card-footer" align="center">
+                    <a href="{% url 'blog:blog_edit' object.pk %}" class="btn btn-info mt-2 mr-2">Изменить</a>
+                    {% if perms.blog.delete_blog %}
+                    <a href="{% url 'blog:blog_delete' object.pk %}" class="btn btn-danger mt-2">Удалить</a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <h2 class="header">Статьи не найдены</h2>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

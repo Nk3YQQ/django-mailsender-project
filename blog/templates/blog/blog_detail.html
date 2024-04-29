@@ -1,0 +1,23 @@
+{% extends 'mailsender_app/base.html' %}
+{% load blog_tags %}
+{% block content %}
+<div class="col-12">
+    <div class="row justify-content-container">
+        <div class="col-8 mx-auto">
+            <h1 class="mb-3">{{ object.title }}</h1>
+            <p class="mb-3">{{ object.owner }}</p>
+            <p class="mb-5">{{ object.created_at }}</p>
+            <img class="mx-auto" src="{{ object.preview|my_media }}" style="width: 300px; height: 300px">
+            <div class="col-12 mt-5">
+                <p>{{ object.body }}</p>
+                <p><b>Количество просмотров:</b> {{ object.view_count }}</p>
+            </div>
+            {% if not user.is_staff %}
+            <div class="card-footer text-center">
+                <a href="{% url 'blog:blog_edit' object.pk %}" class="btn btn-warning">Изменить</a>
+                <a href="{% url 'blog:blog_delete' object.pk %}" class="btn btn-danger">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
