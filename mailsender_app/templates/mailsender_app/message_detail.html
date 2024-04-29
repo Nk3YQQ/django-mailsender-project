@@ -10,10 +10,12 @@
             <div class="card-body">
                 <p class="card-text">{{ object.body }}</p>
             </div>
+            {% if not user.is_staff %}
             <div class="card-footer text-center">
                 <a href="{% url 'mailsender:message_edit' object.pk %}" class="btn btn-warning">Изменить</a>
                 <a href="{% url 'mailsender:message_delete' object.pk %}" class="btn btn-danger">Удалить</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

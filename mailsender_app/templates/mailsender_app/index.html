@@ -1,336 +1,64 @@
 {% extends 'mailsender_app/base.html' %}
 
+{% load blog_tags %}
+
 {% block content %}
 <main>
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-        <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Free</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$0<small
-                            class="text-body-secondary fw-light">/mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>10 users included</li>
-                        <li>2 GB of storage</li>
-                        <li>Email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+    <div class="col-9 mx-auto">
+        <div class="row">
+            <div class="card bg-primary-subtle">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Кто мы такие?</h5>
+                    <p class="card-text mb-2">E&I Communications — это инновационный сервис управления рассылками,
+                        который
+                        предлагает комплексное решение для организации и автоматизации маркетинговых, сервисных и
+                        авторизационных рассылок. Благодаря этому сервису вы сможете привлекать и удерживать клиентов,
+                        регистрировать и верифицировать их в различных каналах коммуникации, таких как SMS, мессенджеры,
+                        соцсети и электронная почта.</p>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Pro</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$15<small
-                            class="text-body-secondary fw-light">/mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>20 users included</li>
-                        <li>10 GB of storage</li>
-                        <li>Priority email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+            <div class="card bg-primary-subtle mt-3">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Какова наша цель?</h5>
+                    <p class="card-text mb-2">Цель сервиса управления рассылками «E&I Communications» — помочь компаниям
+                        увеличить прибыль и расширить клиентскую базу с помощью эффективных email-рассылок,
+                        соответствующих законодательству и политике конфиденциальности.</p>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                <div class="card-header py-3 text-bg-primary border-primary">
-                    <h4 class="my-0 fw-normal">Enterprise</h4>
+            <div class="card bg-primary-subtle mt-3">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Какую проблему решает наше приложение?</h5>
+                    <p class="card-text mb-2">Сервис решает проблему недостаточной эффективности email-маркетинга и
+                        низкого отклика от получателей рассылок. Он предлагает инструменты для автоматизации, аналитики,
+                        персонализации и сегментации рассылок, что позволяет повысить открываемость писем, уменьшить
+                        количество отписок и увеличить конверсию.</p>
                 </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$29<small
-                            class="text-body-secondary fw-light">/mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li>30 users included</li>
-                        <li>15 GB of storage</li>
-                        <li>Phone and email support</li>
-                        <li>Help center access</li>
-                    </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+            </div>
+            <div class="card bg-primary-subtle mt-3">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Наши показатели:</h5>
+                    <p class="card-text mb-2">Общее количество рассылок: {{ mailings }}</p>
+                    <p class="card-text mb-2">Количество активных рассылок: {{ active_mailings }}</p>
+                    <p class="card-text mb-2">Количество клиентов, которые нам доверяют: {{ clients }}</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <h2 class="display-6 text-center mb-4">Compare plans</h2>
-
-    <div class="table-responsive">
-        <table class="table text-center">
-            <thead>
-            <tr>
-                <th style="width: 34%;"></th>
-                <th style="width: 22%;">Free</th>
-                <th style="width: 22%;">Pro</th>
-                <th style="width: 22%;">Enterprise</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row" class="text-start">Public</th>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Private</th>
-                <td></td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-            </tr>
-            </tbody>
-
-            <tbody>
-            <tr>
-                <th scope="row" class="text-start">Permissions</th>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Sharing</th>
-                <td></td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Unlimited members</th>
-                <td></td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-start">Extra security</th>
-                <td></td>
-                <td></td>
-                <td>
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#check"/>
-                    </svg>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="col-9 mx-auto mt-4">
+        <div class="row">
+            <h5>Наш блог:</h5>
+            {% for blog in blogs %}
+            <div class="col-4">
+                <div class="card">
+                    <img class="mx-auto" style="width: 100; height: 100" src="{{ blog.preview|my_media }}">
+                    <div class="card-title mt-4">
+                        <a href="{% url 'blog:blog_detail' blog.pk %}" class="card-title"><h5 align="center">{{ blog.title }}</h5></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
     </div>
-    <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Free</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$0<small
-                                class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>10 users included</li>
-                            <li>2 GB of storage</li>
-                            <li>Email support</li>
-                            <li>Help center access</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Pro</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$15<small
-                                class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>20 users included</li>
-                            <li>10 GB of storage</li>
-                            <li>Priority email support</li>
-                            <li>Help center access</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Enterprise</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$29<small
-                                class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>30 users included</li>
-                            <li>15 GB of storage</li>
-                            <li>Phone and email support</li>
-                            <li>Help center access</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="display-6 text-center mb-4">Compare plans</h2>
-
-        <div class="table-responsive">
-            <table class="table text-center">
-                <thead>
-                <tr>
-                    <th style="width: 34%;"></th>
-                    <th style="width: 22%;">Free</th>
-                    <th style="width: 22%;">Pro</th>
-                    <th style="width: 22%;">Enterprise</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row" class="text-start">Public</th>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Private</th>
-                    <td></td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                </tr>
-                </tbody>
-
-                <tbody>
-                <tr>
-                    <th scope="row" class="text-start">Permissions</th>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Sharing</th>
-                    <td></td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Unlimited members</th>
-                    <td></td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Extra security</th>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#check"/>
-                        </svg>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
 </main>
 {% endblock %}

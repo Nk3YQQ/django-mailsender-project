@@ -1,0 +1,24 @@
+{% extends 'mailsender_app/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="col-8 mx-auto">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h2 align="center">{{ intent.title }}</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="d-grid gap-2 col-3 mx-auto">
+                            <button class="btn btn-primary btn-block mt-2" type="submit">{{ intent.button }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

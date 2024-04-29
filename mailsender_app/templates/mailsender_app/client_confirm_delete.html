@@ -10,7 +10,7 @@
                       {% csrf_token %}
                       <p>Хотите удалить клиента {{ object.name }} с почтой {{ object.email }}?</p>
                       <button type="submit" class="btn btn-danger">Удалить</button>
-                      <a href="{% url 'mailsender:mailing_detail' object.pk %}" class="btn btn-warning">Отмена</a>
+                      <a href="{% url 'mailsender:client_list' object.pk %}" class="btn btn-warning">Отмена</a>
                     </form>
                 </div>
             </div>
