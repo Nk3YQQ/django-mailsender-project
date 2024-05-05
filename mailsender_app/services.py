@@ -1,5 +1,9 @@
 from datetime import timedelta
 
+from django.contrib.auth.hashers import make_password
+
+from users.models import User
+
 
 def choose_periodicity(mailing):
     if mailing.periodicity == 'Раз в день':
@@ -21,3 +25,12 @@ def update_mailing_status(mailing, current_datetime):
         mailing.status = 'Запущена'
 
     mailing.save()
+
+
+def create_user():
+    return User.objects.create(
+        first_name='Test',
+        last_name='Testov',
+        email='test@mail.ru',
+        password=make_password('123qwe456rty')
+    )
