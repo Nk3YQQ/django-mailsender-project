@@ -41,11 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
 
     'crispy_forms',
     'crispy_bootstrap5',
 
     'mailsender_app',
+    'users',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +144,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_URL = '/users/login'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
@@ -159,3 +169,11 @@ if CACHE_ENABLED:
             "LOCATION": os.getenv('LOCATION'),
         }
     }
+
+CRON_LOGS = (
+    BASE_DIR / "cron_logs.log"
+)
+
+CRONJOBS = [
+    ('0 * * * *', 'mailsender_app.cron.send_email', f'>> {CRON_LOGS}'),
+]

@@ -1,0 +1,28 @@
+{% extends 'mailsender_app/base.html' %}
+
+{% load mailsender_tags %}
+
+{% block content %}
+<div class="col-8 mx-auto">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h2 align="center">Данные клиента</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><b>Имя</b>: {{ object.name }}</p>
+                <p class="card-text"><b>Фамилия</b>: {{ object.surname }}</p>
+                <p class="card-text"><b>Отчество</b>: {{ object.patronymic|get_patronymic_or_not }}</p>
+                <p class="card-text"><b>Электронная почта</b>: {{ object.email }}</p>
+                <p class="card-text"><b>Комментарий</b>: {{ object.comment }}</p>
+            </div>
+            {% if not user.is_staff %}
+            <div class="card-footer text-center">
+                <a href="{% url 'mailsender:client_edit' object.pk %}" class="btn btn-warning">Изменить</a>
+                <a href="{% url 'mailsender:client_delete' object.pk %}" class="btn btn-danger">Удалить</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,7 +3,10 @@ services:
   pgdb:
     image: postgres:latest
     container_name: pgdb
+    env_file:
+      - .env.dev
     volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - pgdbdata:/var/lib/postgresql/data
 
   redis:
@@ -16,6 +19,8 @@ services:
     build: .
     container_name: app
     command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env.dev
     volumes:
       - .:/usr/src/app
     ports:

@@ -1,6 +1,10 @@
-django
+django==4.2
 python-dotenv
 psycopg2-binary
 django-crispy-forms
 crispy-bootstrap5
 redis
+django-crontab
+pytz
+pillow
+ipython

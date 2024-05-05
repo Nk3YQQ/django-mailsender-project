@@ -1,0 +1,26 @@
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="{% url 'mailsender:main' %}" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+            <span class="fs-4">E&I Communications</span>
+        </a>
+
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mailsender:client_list' %}">Клиенты</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mailsender:mailing_list' %}">Рассылки</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'mailsender:message_list' %}">Сообщения</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'blog:blog_list' %}">Блог</a>
+            {% if user.is_staff %}
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'users:user_list' %}">Пользователи</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+            <a class="btn btn-outline-danger mr-3" href="/admin">Админка</a>
+            {% endif %}
+            <a class="btn btn-danger" href="{% url 'users:logout' %}">Выйти</a>
+            {% else %}
+            <a class="btn btn-success mx-2" href="{% url 'users:login' %}">Вход</a>
+            <a class="btn btn-warning" href="{% url 'users:register' %}">Регистрация</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
