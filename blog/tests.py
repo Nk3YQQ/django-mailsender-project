@@ -1,8 +1,7 @@
-from django.contrib.auth.hashers import make_password
 from django.test import TestCase
 
 from blog.models import Blog
-from users.models import User
+from mailsender_app.services import create_user
 
 
 class BlogTestCase(TestCase):
@@ -12,15 +11,14 @@ class BlogTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        User.objects.create(
-            first_name='Test',
-            last_name='Testov',
-            email='test@mail.ru',
-            password=make_password('123qwe456rty')
-        )
+        user = create_user()
         number_of_blogs = 5
         for blog_id in range(number_of_blogs):
-            Blog.objects.create(title=f'Title for blog {blog_id}', body=f'Body for blog {blog_id}')
+            blog = Blog.objects.create(title=f'Title for blog {blog_id}', body=f'Body for blog {blog_id}')
+            blog.save()
+
+            blog.owner = user
+            blog.save()
 
     def login_and_go_to_one_blog_material(self):
         self.client.login(email='test@mail.ru', password='123qwe456rty')
