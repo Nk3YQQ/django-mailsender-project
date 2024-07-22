@@ -5,15 +5,19 @@ import pytz
 from django.conf import settings
 from django.core.mail import send_mail
 
-from mailsender_app.models import Mailing, Client, Attempt
+from clients.models import Client
 
-from mailsender_app.services import choose_periodicity, update_mailing_status
+from mailing.models import Mailing, Attempt
+
+from main.services import choose_periodicity, update_mailing_status
 
 
 logging.basicConfig(filename=f'{settings.CRON_LOGS}', level=logging.DEBUG)
 
 
 def send_email():
+    """ Функция для отправки уведомлений пользователям """
+
     logging.debug('-----')
     logging.debug('Start sending emails')
 
