@@ -27,6 +27,7 @@ dfr-tracker-project/
     |—— settings.py
     |—— urls.py
     |—— wsgi.py
+|—— fixtures/ # Фикстуры для проекта
 |—— mailing/ # Приложение рассылок
     |—— migrations/
     |—— templates/
