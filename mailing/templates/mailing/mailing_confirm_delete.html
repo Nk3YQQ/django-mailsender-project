@@ -1,4 +1,4 @@
-{% extends 'mailsender_app/base.html' %}
+{% extends 'main/base.html' %}
 
 {% block content %}
 <div class="col-12">
@@ -10,7 +10,7 @@
                       {% csrf_token %}
                       <p>Хотите удалить клиента №{{ object.pk }}?</p>
                       <button type="submit" class="btn btn-danger">Удалить</button>
-                      <a href="{% url 'mailsender:mailing_detail' object.pk %}" class="btn btn-warning">Отмена</a>
+                      <a href="{% url 'mailing:mailing_detail' object.pk %}" class="btn btn-warning">Отмена</a>
                     </form>
                 </div>
             </div>

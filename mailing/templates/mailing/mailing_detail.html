@@ -1,4 +1,4 @@
-{% extends 'mailsender_app/base.html' %}
+{% extends 'main/base.html' %}
 
 {% block content %}
 <div class="col-8 mx-auto">
@@ -20,13 +20,13 @@
             </div>
             {% if not user.is_staff %}
             <div class="card-footer text-center">
-                <a href="{% url 'mailsender:mailing_edit' object.pk %}" class="btn btn-warning">Изменить</a>
-                <a href="{% url 'mailsender:mailing_delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                <a href="{% url 'mailing:mailing_edit' object.pk %}" class="btn btn-warning">Изменить</a>
+                <a href="{% url 'mailing:mailing_delete' object.pk %}" class="btn btn-danger">Удалить</a>
             </div>
             {% endif %}
             {% if user.is_staff %}
             <div class="card-footer text-center">
-                <a href="{% url 'mailsender:activity' object.pk %}" class="btn btn-warning">Деактивировать</a>
+                <a href="{% url 'mailing:mailing_activity' object.pk %}" class="btn btn-warning">Деактивировать</a>
             </div>
             {% endif %}
         </div>
