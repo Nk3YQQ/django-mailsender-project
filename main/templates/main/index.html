@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+
+{% load app_tags %}
+
+{% block content %}
+<main>
+    <div class="col-9 mx-auto">
+        <div class="row">
+            <div class="card bg-primary-subtle">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Кто мы такие?</h5>
+                    <p class="card-text mb-2">E&I Communications — это инновационный сервис управления рассылками,
+                        который
+                        предлагает комплексное решение для организации и автоматизации маркетинговых, сервисных и
+                        авторизационных рассылок. Благодаря этому сервису вы сможете привлекать и удерживать клиентов,
+                        регистрировать и верифицировать их в различных каналах коммуникации, таких как SMS, мессенджеры,
+                        соцсети и электронная почта.</p>
+                </div>
+            </div>
+            <div class="card bg-primary-subtle mt-3">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Какова наша цель?</h5>
+                    <p class="card-text mb-2">Цель сервиса управления рассылками «E&I Communications» — помочь компаниям
+                        увеличить прибыль и расширить клиентскую базу с помощью эффективных email-рассылок,
+                        соответствующих законодательству и политике конфиденциальности.</p>
+                </div>
+            </div>
+            <div class="card bg-primary-subtle mt-3">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Какую проблему решает наше приложение?</h5>
+                    <p class="card-text mb-2">Сервис решает проблему недостаточной эффективности email-маркетинга и
+                        низкого отклика от получателей рассылок. Он предлагает инструменты для автоматизации, аналитики,
+                        персонализации и сегментации рассылок, что позволяет повысить открываемость писем, уменьшить
+                        количество отписок и увеличить конверсию.</p>
+                </div>
+            </div>
+            <div class="card bg-primary-subtle mt-3">
+                <div class="card-boby">
+                    <h5 class="card-title mt-2">Наши показатели:</h5>
+                    <p class="card-text mb-2">Общее количество рассылок: {{ mailings }}</p>
+                    <p class="card-text mb-2">Количество активных рассылок: {{ active_mailings }}</p>
+                    <p class="card-text mb-2">Количество клиентов, которые нам доверяют: {{ clients }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-9 mx-auto mt-4">
+        <div class="row">
+            <h5>Наш блог:</h5>
+            {% for blog in blogs %}
+            <div class="col-4">
+                <div class="card">
+                    <img class="mx-auto" style="width: 100; height: 100" src="{{ blog.preview|my_media }}">
+                    <div class="card-title mt-4">
+                        <a href="{% url 'blog:blog_detail' blog.pk %}" class="card-title"><h5 align="center">{{ blog.title }}</h5></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

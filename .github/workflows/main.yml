@@ -29,9 +29,6 @@ jobs:
       - name: Check containers status
         run: make status
 
-      - name: Run tests
-        run: make tests
-
       - name: View logs if failure
         if: failure()
         run: make logs

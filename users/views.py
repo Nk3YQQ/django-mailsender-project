@@ -10,6 +10,8 @@ from users.models import User
 
 
 class LoginView(BaseLoginView):
+    """ Контроллер для входа в аккаунт """
+
     template_name = 'users/login.html'
 
     def get_context_data(self, **kwargs):
@@ -19,10 +21,14 @@ class LoginView(BaseLoginView):
 
 
 class LogoutView(BaseLogoutView):
+    """ Контроллер для выхода из аккаунта """
+
     pass
 
 
 class RegisterView(CreateView):
+    """ Контроллер для регистрации пользователя """
+
     model = User
     form_class = RegisterForm
     template_name = 'users/registration.html'
@@ -45,16 +51,23 @@ class UserListView(ListView):
 
 
 class UserDetailView(DetailView):
+    """ Контроллер для чтения пользователя """
+
     model = User
 
 
 @login_required
 def deactivate_user(request, pk):
+    """ Контроллер для деактивации пользователя """
+
     user = get_object_or_404(User, pk=pk)
+
     if user.is_active:
         user.is_active = False
+
     else:
         user.is_active = True
 
     user.save()
+
     return redirect(reverse('users:user_list'))

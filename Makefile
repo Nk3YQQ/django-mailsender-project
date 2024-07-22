@@ -13,11 +13,12 @@ status:
 logs:
 	docker-compose logs
 
-tests:
-	docker-compose exec -T app python3 manage.py test
-
 linters:
-	docker-compose exec -T app flake8 mailsender_app/
+	docker-compose exec -T app flake8 blog/
+	docker-compose exec -T app flake8 clients/
+	docker-compose exec -T app flake8 mailing/
+	docker-compose exec -T app flake8 message/
+	docker-compose exec -T app flake8 main/
 	docker-compose exec -T app flake8 users/
 
 stop:

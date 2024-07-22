@@ -1,3 +1,87 @@
+# Структура проекта
+```
+dfr-tracker-project/
+|—— blog/ # Приложение блога
+    |—— migrations/
+    |—— templates/
+    |—— __init__.py
+    |—— admin.py
+    |—— apps.py
+    |—— forms.py
+    |—— models.py
+    |—— urls.py
+    |—— views.py
+|—— clients/ # Приложение клиентов
+    |—— migrations/
+    |—— templates/
+    |—— __init__.py
+    |—— admin.py
+    |—— apps.py
+    |—— forms.py
+    |—— models.py
+    |—— urls.py
+    |—— views.py
+|—— config/ # Настройки проекта
+    |—— __init__.py
+    |—— asgi.py
+    |—— settings.py
+    |—— urls.py
+    |—— wsgi.py
+|—— mailing/ # Приложение рассылок
+    |—— migrations/
+    |—— templates/
+    |—— __init__.py
+    |—— admin.py
+    |—— apps.py
+    |—— forms.py
+    |—— models.py
+    |—— urls.py
+    |—— views.py
+|—— main/ # Главное приложение
+    |—— management/ 
+    |—— templates/
+    |—— templatetags/
+    |—— __init__.py
+    |—— apps.py
+    |—— cron.py
+    |—— permissions.py
+    |—— services.py
+    |—— urls.py
+    |—— views.py
+|—— media/ # Папка для изоброжений
+    |—— blog/
+|—— message/ # Приложение сообщений
+    |—— migrations/
+    |—— templates/
+    |—— __init__.py
+    |—— admin.py
+    |—— apps.py
+    |—— forms.py
+    |—— models.py
+    |—— urls.py
+    |—— views.py
+|—— users/ # Приложение пользователей
+    |—— migrations/
+    |—— templates/
+    |—— __init__.py
+    |—— admin.py
+    |—— apps.py
+    |—— forms.py
+    |—— models.py
+    |—— urls.py
+    |—— views.py
+|—— .dockerignore
+|—— .env.sample
+|—— .gitignore
+|—— docker-compose.yml
+|—— Dockerfile
+|—— LICENSE
+|—— Makefile
+|—— manage.py
+|—— README.md
+|—— requirements.txt
+```
+
 # Результаты работы:
 - ### Реализован CRUD для клиента, письма, рассылки, пользователей и блога
 - ### Создан механизм для отправки уведомлений и периодических задач
