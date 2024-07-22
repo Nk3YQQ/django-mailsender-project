@@ -1,9 +1,9 @@
-FROM python:latest
+FROM python:3.10
 
-WORKDIR /usr/src/app/
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 
-COPY ./docker-entrypoint.sh .
-RUN chmod +x ./docker-entrypoint.sh
+WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

@@ -4,23 +4,22 @@ services:
     image: postgres:latest
     container_name: pgdb
     env_file:
-      - ./.env.dev
+      - ./.env
     volumes:
-      - ./init.sql:/dockerr-entrypoint-initdb.d/init.sql
       - pgdbdata:/var/lib/postgresql/data
 
   redis:
     image: redis:latest
-    container_name: redis_server
+    container_name: redis
     expose:
       - 6379
 
   app:
     build: .
     container_name: app
-    command: sh -c "sleep 5 && ./docker-entrypoint.sh"
+    command: make entrypoint
     env_file:
-      - ./.env.dev
+      - ./.env
     volumes:
       - .:/usr/src/app
     ports:
