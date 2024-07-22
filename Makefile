@@ -8,10 +8,10 @@ entrypoint:
 	python manage.py runserver 0.0.0.0:8000
 
 status:
-	docker-compose -f docker-compose.dev.yml ps
+	docker-compose ps
 
 logs:
-	docker-compose -f docker-compose.dev.yml logs
+	docker-compose logs
 
 tests:
 	docker-compose exec -T app python3 manage.py test
