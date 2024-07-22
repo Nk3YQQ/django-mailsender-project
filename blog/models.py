@@ -1,10 +1,11 @@
 from django.db import models
 
-from mailsender_app.models import NULLABLE
-from users.models import User
+NULLABLE = {'blank': True, 'null': True}
 
 
 class Blog(models.Model):
+    """ Модель для блога """
+
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     body = models.TextField(verbose_name='Содержимое')
     preview = models.ImageField(upload_to='blog/', verbose_name='Превью', **NULLABLE)
@@ -12,7 +13,7 @@ class Blog(models.Model):
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
     view_count = models.IntegerField(default=0, verbose_name='Количество просмотров')
 
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
+    owner = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
 
     def __str__(self):
         return self.title

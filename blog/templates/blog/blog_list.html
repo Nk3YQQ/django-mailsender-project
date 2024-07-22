@@ -1,6 +1,6 @@
-{% extends 'mailsender_app/base.html' %}
+{% extends 'main/base.html' %}
 
-{% load blog_tags %}
+{% load app_tags %}
 
 {% block content %}
 <a href="{% url 'blog:blog_create' %}" class="btn btn-outline-primary mb-4">Добавить статью</a>
