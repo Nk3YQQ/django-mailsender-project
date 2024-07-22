@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
 
-    'mailsender_app',
+    'main',
+    'mailing',
+    'clients',
+    'message',
     'users',
     'blog',
 ]
@@ -174,5 +177,5 @@ CRON_LOGS = (
 )
 
 CRONJOBS = [
-    ('0 * * * *', 'mailsender_app.cron.send_email', f'>> {CRON_LOGS}'),
+    ('0 * * * *', 'mailsender.cron.send_email', f'>> {CRON_LOGS}'),
 ]
