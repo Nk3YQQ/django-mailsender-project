@@ -1,4 +1,3 @@
-from django.contrib.auth.hashers import make_password
 from django.test import TestCase
 
 from mailsender_app.models import Client
@@ -47,12 +46,12 @@ class ClientTestCase(TestCase):
     def test_update_client(self):
         client = Client.objects.get(pk=self.client_id)
 
-        client.name = 'Oleg'
-        client.surname = 'Maslov'
-        client.email = 'oleg.maslov@mail.ru'
+        client.name = 'Ivan'
+        client.surname = 'Ivanov'
+        client.email = 'ivan.ivanov@mail.ru'
 
         client.save()
 
-        self.assertEqual(client.name, 'Oleg')
-        self.assertEqual(client.surname, 'Maslov')
-        self.assertEqual(client.email, 'oleg.maslov@mail.ru')
+        self.assertEqual(client.name, 'Ivan')
+        self.assertEqual(client.surname, 'Ivanov')
+        self.assertEqual(client.email, 'ivan.ivanov@mail.ru')

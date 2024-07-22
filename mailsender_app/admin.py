@@ -9,10 +9,10 @@ class ClientAdmin(admin.ModelAdmin):
 
 
 @admin.register(Message)
-class ClientAdmin(admin.ModelAdmin):
+class MessageAdmin(admin.ModelAdmin):
     list_display = ('title', 'body', 'owner')
 
 
 @admin.register(Mailing)
-class ClientAdmin(admin.ModelAdmin):
+class MailingAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'ended_at', 'periodicity', 'status', 'owner')
