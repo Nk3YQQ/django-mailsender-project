@@ -7,6 +7,12 @@ entrypoint:
 	python3 manage.py create_moderator
 	python manage.py runserver 0.0.0.0:8000
 
+status:
+	docker-compose -f docker-compose.dev.yml ps
+
+logs:
+	docker-compose -f docker-compose.dev.yml logs
+
 tests:
 	docker-compose exec -T app python3 manage.py test
 
