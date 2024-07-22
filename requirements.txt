@@ -8,3 +8,4 @@ django-crontab
 pytz
 pillow
 ipython
+flake8
