@@ -98,7 +98,6 @@ dfr-tracker-project/
 - ### Redis
 - ### django-crontab
 - ### Docker
-- ### unittest
 - ### GitHub Actions (CI)
 
 # Как пользоваться проектом
